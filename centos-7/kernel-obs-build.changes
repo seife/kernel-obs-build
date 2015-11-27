@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Nov 26 13:53:38 UTC 2015 - seife@opensuse.slipkontur.de
+
+- only build .kvm version, .xen does not work yet...
+
+-------------------------------------------------------------------
+Thu Nov 26 09:13:42 UTC 2015 - seife@opensuse.slipkontur.de
+
+- first try building obs kernel for CentOS
+
