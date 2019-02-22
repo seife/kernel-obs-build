@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 22 08:58:51 UTC 2019 - seife@opensuse.slipkontur.de
+
+- add XFS module, use _multibuild feature
+- manually load ext4 module to workaround unknown option on cmdline
+
+-------------------------------------------------------------------
 Thu Nov 26 13:53:38 UTC 2015 - seife@opensuse.slipkontur.de
 
 - only build .kvm version, .xen does not work yet...
