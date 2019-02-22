@@ -37,7 +37,8 @@ cat > %{buildroot}/usr/lib/dracut/modules.d/80obs/module-setup.sh <<EOF
 
 # called by dracut
 check() {
-    return 0
+    require_binaries modinfo insmod || return 1
+    return 255
 }
 
 # called by dracut
@@ -48,16 +49,24 @@ installkernel() {
 # called by dracut
 install() {
     inst_hook pre-udev 10 "\$moddir"/setup_obs.sh
+    inst_multiple modinfo insmod
 }
 EOF
 chmod a+rx %{buildroot}/usr/lib/dracut/modules.d/80obs/module-setup.sh
 cat > %{buildroot}/usr/lib/dracut/modules.d/80obs/setup_obs.sh <<EOF
-#!/bin/sh
+#!/bin/bash
 info "Loading kernel modules for OBS"
 info "  Loop..."
 modprobe loop max_loop=64 lbs=0 || modprobe loop max_loop=64
 info "  binfmt misc..."
 modprobe binfmt_misc
+## ext4 is special, and obs appends illegal options...
+DEPS=\$(modinfo -F depends ext4),ext4
+DEPS="\${DEPS//,/ }"
+for i in \$DEPS; do
+    info "  INSMOD \$i"
+    insmod \$(modinfo -n \$i)
+done
 EOF
 chmod a+rx %{buildroot}/usr/lib/dracut/modules.d/80obs/setup_obs.sh
 
