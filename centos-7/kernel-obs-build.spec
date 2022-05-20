@@ -45,7 +45,7 @@ loaded during build when installing the kernel package.
 mkdir tmp
 # a longer list to have them also available for qemu cross builds where x86_64 kernel runs in eg. arm env.
 # this list of modules where available on build workers of build.opensuse.org, so we stay compatible.
-export KERNEL_MODULES="loop dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 reiserfs btrfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat nls_cp437 nls_iso8859-1 ibmvscsi ibmvscsic"
+export KERNEL_MODULES="loop dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 xfs reiserfs btrfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat nls_cp437 nls_iso8859-1 ibmvscsi ibmvscsic"
 KNAME="`echo /boot/%{kernel_name}-* | sed -n -e 's,[^-]*-\(.*\)$,\1,p'`"
 dracut -v --host-only --force-add obs --drivers="$KERNEL_MODULES" --force tmp/initrd.kvm $KNAME
 
