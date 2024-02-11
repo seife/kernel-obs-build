@@ -1,7 +1,7 @@
 # kernel-obs-build
 OBS build kernels for non-SUSE distributions
 
-The OBS can use the distribution's kenrel for build VMs, however it needs to be prepared for this task.
+The OBS can use the distribution's kernel for build VMs, however it needs to be prepared for this task.
 So for newer SUSE distributions, there is a package ``kernel-obs-build``, which does exactly that.
 
 Basically the original kernel is copied to
@@ -24,4 +24,4 @@ Good Luck :-)
 ## Notes
 
    * your build service installation needs to be new enough to support the ``multibuild`` feature
-   * previous versions tried to build XEN kernels/initrds, too, but I never succeeded in actually getting them to work, at least with CentOS-7, so I dropped them. The OBS reference installation also uses onyl KVM workers, so just go for that :-)
+   * previous versions tried to build XEN kernels/initrds, too, but I never succeeded in actually getting them to work, at least with CentOS-7, so I dropped them. The OBS reference installation also uses only KVM workers, so just go for that :-)
